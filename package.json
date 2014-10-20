@@ -1,0 +1,14 @@
+{
+  "name": "urnaweb-watcher",
+  "version": "0.0.0",
+  "description": "Urna Web Watcher Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Kaue Miyauti Machado",
+  "license": "ISC",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
