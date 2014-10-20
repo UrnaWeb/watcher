@@ -18,5 +18,5 @@ firebaseInstance.auth( process.env.FIREBASE_KEY, function() {
    firebaseInstance.child('votes').on('child_changed', function(childSnapshot, prevChildSiblingName) {
       // firebaseInstance.child('changes_count').set( snap.numChildren() );
       console.log(childSnapshot);
-   });
+   })
 }
