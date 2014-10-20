@@ -1,31 +1,19 @@
-// var express = require('express');
-// var Firebase = require('firebase');
-// var firebaseInstance = new Firebase(process.env.FBURL);
-// var app = express();
-
-// app.set('port', (process.env.PORT || 5000))
-// app.use(express.static(__dirname + '/public'))
-
-// app.get('/', function(request, response) {
-//   response.send('The monster is awake!')
-// })
-
-// app.listen(app.get('port'), function() {
-//   console.log("Node app is running at localhost:" + app.get('port'))
-// })
-
-// firebaseInstance.auth( process.env.FIREBASE_KEY, function() {
-//    firebaseInstance.child('votes').on('child_changed', function(childSnapshot, prevChildSiblingName) {
-//       // firebaseInstance.child('changes_count').set( snap.numChildren() );
-//       console.log(childSnapshot);
-//    })
-// }
-
+var express = require('express');
 var Firebase = require('firebase');
+var firebase_instance = new Firebase(process.env.FIREBASE_URL);
+var app = express();
 
-var fb = new Firebase(process.env.FIREBASE_URL);
-fb.auth(process.env.FIREBASE_KEY, function() {
-  fb.child('votes').on('child_changed', function(snap) {
+app.set('port', (process.env.PORT || 5000))
+app.get('/', function(request, response) {
+  response.send('The monster is awake!')
+})
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
+})
+
+firebase_instance.auth(process.env.FIREBASE_KEY, function() {
+  firebase_instance.child('votes').on('child_changed', function(snap) {
     console.log(snap);
   });
 });
