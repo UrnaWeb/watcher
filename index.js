@@ -14,6 +14,6 @@ app.listen(app.get('port'), function() {
 
 firebase_instance.auth(process.env.FIREBASE_KEY, function() {
   firebase_instance.child('votes').on('child_changed', function(snap) {
-    console.log(snap);
+    console.log(snap.val());
   });
 });
