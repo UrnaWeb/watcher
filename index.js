@@ -39,5 +39,8 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     firebase_instance.child('counts').child(party).transaction(function (current_value) {
       return (current_value || 0) + 1;
     });
+    firebase_instance.child('counts').child('total').transaction(function (current_value) {
+      return (current_value || 0) + 1;
+    });
   });
 });
