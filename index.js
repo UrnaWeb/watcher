@@ -21,9 +21,15 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
       firebase_instance.child('counts').child('pt').transaction(function (current_value) {
         return (current_value || 0) + 1;
       });
+      firebase_instance.child('counts').child('psdb').transaction(function (current_value) {
+        return (current_value || 0) - 1;
+      });
     } else if(party === 'psdb') {
       firebase_instance.child('counts').child('psdb').transaction(function (current_value) {
         return (current_value || 0) + 1;
+      });
+      firebase_instance.child('counts').child('pt').transaction(function (current_value) {
+        return (current_value || 0) - 1;
       });
     }
   });
