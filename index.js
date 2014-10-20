@@ -33,4 +33,11 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
       });
     }
   });
+
+  firebase_instance.child('votes').on('child_added', function(snap) {
+    var party = snap.val().party;
+    firebase_instance.child('counts').child(party).transaction(function (current_value) {
+      return (current_value || 0) + 1;
+    });
+  });
 });
