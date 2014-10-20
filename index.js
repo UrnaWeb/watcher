@@ -1,3 +1,4 @@
+require('newrelic');
 var express = require('express');
 var Firebase = require('firebase');
 var firebase_instance = new Firebase(process.env.FIREBASE_URL);
