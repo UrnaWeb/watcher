@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "express": "~4.9.x",
-    "firebase": "^1.1.2"
+    "firebase": "^1.1.2",
+    "newrelic": "^1.12.1"
   }
 }
