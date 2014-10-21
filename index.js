@@ -18,6 +18,9 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
       firebase_instance.child('votes').child('none').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
           snapshot.ref().remove();
+          firebase_instance.child('counts').child('none').transaction(function (current_value) {
+            return (current_value || 0) - 1;
+          });
         }
       });
     },
@@ -25,6 +28,9 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
       firebase_instance.child('votes').child('pt').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
           snapshot.ref().remove();
+          firebase_instance.child('counts').child('pt').transaction(function (current_value) {
+            return (current_value || 0) - 1;
+          });
         }
       });
     },
@@ -32,6 +38,9 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
       firebase_instance.child('votes').child('psdb').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
           snapshot.ref().remove();
+          firebase_instance.child('counts').child('psdb').transaction(function (current_value) {
+            return (current_value || 0) - 1;
+          });
         }
       });
     }
