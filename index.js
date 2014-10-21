@@ -16,15 +16,24 @@ app.listen(app.get('port'), function() {
 firebase_instance.auth(process.env.FIREBASE_KEY, function() {
   firebase_instance.child('votes').child('none').on('child_added', function(data) {
     var teste = data.val();
-    console.log('none: ' + teste);
+    Object.keys(teste).forEach(function(key) {
+      var val = o[key];
+      console.log(val);
+    });
   });
   firebase_instance.child('votes').child('pt').on('child_added', function(data) {
     var teste = data.val();
-    console.log('pt: ' + teste);
+    Object.keys(teste).forEach(function(key) {
+      var val = o[key];
+      console.log(val);
+    });
   });
   firebase_instance.child('votes').child('psdb').on('child_added', function(data) {
     var teste = data.val();
-    console.log('psdb: ' + teste);
+    Object.keys(teste).forEach(function(key) {
+      var val = o[key];
+      console.log(val);
+    });
   });
 });
 
