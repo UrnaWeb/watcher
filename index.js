@@ -23,7 +23,7 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
         }
       });
     }
-  };
+  }
 
   firebase_instance.child('votes').child('none').on('child_added', function(vote) {
     var vote_user_uid = vote.name();
