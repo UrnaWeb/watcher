@@ -13,10 +13,22 @@ app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
 
-var increment
-
 firebase_instance.auth(process.env.FIREBASE_KEY, function() {
-  firebase_instance.child('votes').on('value', function(snap) {
+  firebase_instance.child('votes').child('none').on('child_added', function(data) {
+    var teste = data.val();
+    console.log('none: ' + teste);
+  });
+  firebase_instance.child('votes').child('pt').on('child_added', function(data) {
+    var teste = data.val();
+    console.log('pt: ' + teste);
+  });
+  firebase_instance.child('votes').child('psdb').on('child_added', function(data) {
+    var teste = data.val();
+    console.log('psdb: ' + teste);
+  });
+});
+
+
 
     // var party = snap.val().party;
     // if(party === 'pt') {
@@ -35,8 +47,8 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     //   });
     // }
 
-    console.log(snap.val());
-  });
+  //   console.log(snap.val());
+
 
   // firebase_instance.child('votes').on('child_added', function(snap) {
   //   var party = snap.val().party;
@@ -47,4 +59,3 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
   //     return (current_value || 0) + 1;
   //   });
   // });
-});
