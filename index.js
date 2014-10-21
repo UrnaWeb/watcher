@@ -15,21 +15,21 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
 
   var find_and_remove = {
     none: function(vote_user_uid) {
-      firebaseReference.child('votes').child('none').child(vote_user_uid).once('value', function(snapshot) {
+      firebase_instance.child('votes').child('none').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
           console.log(snapshot.ref());
         }
       });
     },
     pt: function(vote_user_uid) {
-      firebaseReference.child('votes').child('pt').child(vote_user_uid).once('value', function(snapshot) {
+      firebase_instance.child('votes').child('pt').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
           console.log(snapshot.ref());
         }
       });
     },
     psdb: function(vote_user_uid) {
-      firebaseReference.child('votes').child('psdb').child(vote_user_uid).once('value', function(snapshot) {
+      firebase_instance.child('votes').child('psdb').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
           console.log(snapshot.ref());
         }
