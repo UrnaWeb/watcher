@@ -17,21 +17,21 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     none: function(vote_user_uid) {
       firebase_instance.child('votes').child('none').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
-          console.log(snapshot.ref());
+          snapshot.ref().remove();
         }
       });
     },
     pt: function(vote_user_uid) {
       firebase_instance.child('votes').child('pt').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
-          console.log(snapshot.ref());
+          snapshot.ref().remove();
         }
       });
     },
     psdb: function(vote_user_uid) {
       firebase_instance.child('votes').child('psdb').child(vote_user_uid).once('value', function(snapshot) {
         if(snapshot.val() !== null) {
-          console.log(snapshot.ref());
+          snapshot.ref().remove();
         }
       });
     }
