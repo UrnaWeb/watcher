@@ -16,7 +16,8 @@ app.listen(app.get('port'), function() {
 var increment
 
 firebase_instance.auth(process.env.FIREBASE_KEY, function() {
-  firebase_instance.child('votes').on('child_added', function(snap) {
+  firebase_instance.child('votes').on('value', function(snap) {
+
     // var party = snap.val().party;
     // if(party === 'pt') {
     //   firebase_instance.child('counts').child('pt').transaction(function (current_value) {
@@ -34,7 +35,7 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     //   });
     // }
 
-    console.log(snap.val());
+    console.log(snap);
   });
 
   // firebase_instance.child('votes').on('child_added', function(snap) {
