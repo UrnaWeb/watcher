@@ -34,7 +34,7 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     //   });
     // }
 
-    console.log(snap);
+    console.log(snap.val());
   });
 
   // firebase_instance.child('votes').on('child_added', function(snap) {
