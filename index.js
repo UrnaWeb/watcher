@@ -20,6 +20,9 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
           firebase_instance.child('counts').child(party).transaction(function (current_value) {
             return (current_value || 0) - 1;
           });
+          firebase_instance.child('counts').child('total').transaction(function (current_value) {
+            return (current_value || 0) - 1;
+          });
         }
       });
     });
@@ -30,6 +33,9 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     firebase_instance.child('counts').child('none').transaction(function (current_value) {
       return (current_value || 0) + 1;
     });
+    firebase_instance.child('counts').child('total').transaction(function (current_value) {
+      return (current_value || 0) + 1;
+    });
     find_and_remove(['pt','psdb'], vote_user_uid);
   });
 
@@ -38,12 +44,18 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     firebase_instance.child('counts').child('pt').transaction(function (current_value) {
       return (current_value || 0) + 1;
     });
+    firebase_instance.child('counts').child('total').transaction(function (current_value) {
+      return (current_value || 0) + 1;
+    });
     find_and_remove(['none','psdb'], vote_user_uid);
   });
 
   firebase_instance.child('votes').child('psdb').on('child_added', function(vote) {
     var vote_user_uid = vote.name();
     firebase_instance.child('counts').child('psdb').transaction(function (current_value) {
+      return (current_value || 0) + 1;
+    });
+    firebase_instance.child('counts').child('total').transaction(function (current_value) {
       return (current_value || 0) + 1;
     });
     find_and_remove(['none','pt'], vote_user_uid);
