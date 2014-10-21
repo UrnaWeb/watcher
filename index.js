@@ -15,14 +15,26 @@ app.listen(app.get('port'), function() {
 
 firebase_instance.auth(process.env.FIREBASE_KEY, function() {
   firebase_instance.child('votes').child('none').on('value', function(data) {
-    console.log(data.val());
+    var vote = Object.keys(data.val());
+    vote.forEach(function(user_uid){
+      console.log(user_uid);
+    });
   });
+
   firebase_instance.child('votes').child('pt').on('value', function(data) {
-    console.log(data.val());
+    var vote = Object.keys(data.val());
+    vote.forEach(function(user_uid){
+      console.log(user_uid);
+    });
   });
+
   firebase_instance.child('votes').child('psdb').on('value', function(data) {
-    console.log(data.val());
+    var vote = Object.keys(data.val());
+    vote.forEach(function(user_uid){
+      console.log(user_uid);
+    });
   });
+
 });
 
 
