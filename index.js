@@ -14,16 +14,13 @@ app.listen(app.get('port'), function() {
 })
 
 firebase_instance.auth(process.env.FIREBASE_KEY, function() {
-  firebase_instance.child('votes').child('none').on('child_added', function(data) {
-    var teste = data;
+  firebase_instance.child('votes').child('none').on('value', function(data) {
     console.log(data.val());
   });
-  firebase_instance.child('votes').child('pt').on('child_added', function(data) {
-    var teste = data;
+  firebase_instance.child('votes').child('pt').on('value', function(data) {
     console.log(data.val());
   });
-  firebase_instance.child('votes').child('psdb').on('child_added', function(data) {
-    var teste = data;
+  firebase_instance.child('votes').child('psdb').on('value', function(data) {
     console.log(data.val());
   });
 });
