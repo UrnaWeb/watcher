@@ -19,7 +19,8 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     // vote.forEach(function(user_uid){
     //   console.log(user_uid);
     // });
-    console.log(typeof data.val());
+    var teste = data.exportVal();
+    console.log(Object.keys(teste));
   });
 
   firebase_instance.child('votes').child('pt').on('value', function(data) {
@@ -27,7 +28,8 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     // vote.forEach(function(user_uid){
     //   console.log(user_uid);
     // });
-    console.log(typeof data.val());
+    var teste = data.exportVal();
+    console.log(Object.keys(teste));
   });
 
   firebase_instance.child('votes').child('psdb').on('value', function(data) {
@@ -35,7 +37,8 @@ firebase_instance.auth(process.env.FIREBASE_KEY, function() {
     // vote.forEach(function(user_uid){
     //   console.log(user_uid);
     // });
-    console.log(typeof data.val());
+    var teste = data.exportVal();
+    console.log(Object.keys(teste));
   });
 
 });
