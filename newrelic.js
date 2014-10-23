@@ -8,7 +8,8 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : ['UrnaWebWatcher'],
+
+  app_name : [process.env.NEW_RELIC_APP_NAME],
   /**
    * Your New Relic license key.
    */
